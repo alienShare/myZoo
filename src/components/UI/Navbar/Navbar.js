@@ -20,6 +20,9 @@ return (
           <NavLink to="/" exact className="nav-link">Accueil</NavLink>
         </li>
         <li className="nav-item">
+          <NavLink to="/animaux" exact className="nav-link">Les animaux</NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink to="/contact" exact className="nav-link">Contact</NavLink>
         </li>
         

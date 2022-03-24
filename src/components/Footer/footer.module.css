@@ -1,0 +1,6 @@
+.p-footer-link{
+    color: white;
+}
+.p-footer-link:hover{
+    filter: brightness(1.2); 
+}

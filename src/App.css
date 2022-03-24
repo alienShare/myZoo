@@ -8,3 +8,42 @@
 h1, h2, h3, h4, h5{
   font-family: 'Indie Flower', cursive;
 }
+.site{
+  min-height: 100vh;
+  margin-bottom: -140px;
+}
+footer, .minsite{
+  height: 140px;
+}
+.img-fb, .img-twitter{
+  height: 75px;
+}
+.img-youtube{
+  height: 25px;
+}
+.photo{
+  object-fit: scale-down;
+  height: 100%;
+}
+.photo-container{
+  height: 100px;
+}
+
+@media only screen and (max-width: 720px){
+
+  .site{
+    min-height: 100vh;
+    margin-bottom: -90px;
+  }
+
+  footer, .minsite{
+    height: 90px;
+  }
+
+  .img-fb, .img-twitter{
+    height: 40px;
+  }
+  .img-youtube{
+    height: 20px;
+  }
+}
