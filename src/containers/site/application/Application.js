@@ -13,6 +13,14 @@ export default class Application extends Component {
         super(props);
     }
     animauxAddress = 'http://localhost/SERVEURANIMAUX/front/animaux'
+    
+    handleSelectionFamille = (familleId)=>{
+        console.log("famille : ", familleId);
+    }
+    handleSectionContinent = (continenId) =>{
+        console.log("continent : ", continenId);
+    }
+    
     componentDidMount(){
         // object.values --> tab d'objets        
         axios.get(this.animauxAddress)
@@ -31,7 +39,7 @@ export default class Application extends Component {
            this.state.animaux.map(animal=>{
              return  (
              <div className='col-12 col-md-6 col-xl-4' key={animal.id}>
-                 <Animal {...animal} />
+                 <Animal {...animal} filtreContinent={this.handleSectionContinent} filtreFamille={this.handleSelectionFamille} />
              </div>
             )
             })}

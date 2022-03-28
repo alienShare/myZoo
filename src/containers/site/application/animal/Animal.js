@@ -16,7 +16,7 @@ return (
 
   <div className="card-body">
     <h3>Famille</h3>
-    <Bouton typeBtn="btn-primary">{props.famille.libelleFamille.toUpperCase()}</Bouton>
+    <Bouton typeBtn="btn-dark" clic = {()=>props.filtreFamille(props.famille.idFamille)}>{props.famille.libelleFamille.toUpperCase()}</Bouton>
     <div>{props.famille.descriptionFamille}</div>
   </div>
   <ul className="list-group list-group-flush">
@@ -55,7 +55,13 @@ return (
                 colorBtn="btn-secondary";
                 break;
         }
-        return <Bouton key={aContinent.idContinent} typeBtn={colorBtn} css='m-1'>{aContinent.libelleContinent}</Bouton>
+        return <Bouton 
+        key={aContinent.idContinent} 
+        typeBtn={colorBtn} 
+        css='m-1'
+        clic={()=>props.filtreContinent(aContinent.idContinent)}
+        >
+          {aContinent.libelleContinent} </Bouton>
         
     })
     }
