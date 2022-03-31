@@ -16,7 +16,11 @@ return (
 
   <div className="card-body">
     <h3>Famille</h3>
-    <Bouton typeBtn="btn-dark" clic = {()=>props.filtreFamille(props.famille.idFamille)}>{props.famille.libelleFamille.toUpperCase()}</Bouton>
+    <Bouton 
+      typeBtn="btn-dark" 
+      clic = {()=>props.filtreFamille(props.famille.idFamille)}
+      >{props.famille.libelleFamille.toUpperCase()}
+    </Bouton>
     <div>{props.famille.descriptionFamille}</div>
   </div>
   <ul className="list-group list-group-flush">
@@ -34,34 +38,17 @@ return (
        
     props.continents && props.continents.map((aContinent)=>{
         let colorBtn = "";
-        switch (aContinent.idContinent) {
-            case "1":
-                colorBtn="btn-primary";                
-            break;
-            case "2":
-                colorBtn="btn-danger";                 
-            break;
-            case "3":
-                colorBtn="btn-warning";
-            break;
-            case "4":
-                colorBtn="btn-success";                
-            break;
-            case "5":
-                colorBtn="btn-info";
-            break;
-        
-            default:
-                colorBtn="btn-secondary";
-                break;
-        }
+        colorBtn = props.btnColor(aContinent.idContinent);
+        console.log("lacouleur : ", colorBtn);
+
         return <Bouton 
         key={aContinent.idContinent} 
         typeBtn={colorBtn} 
         css='m-1'
         clic={()=>props.filtreContinent(aContinent.idContinent)}
         >
-          {aContinent.libelleContinent} </Bouton>
+          {aContinent.libelleContinent} 
+        </Bouton>
         
     })
     }
