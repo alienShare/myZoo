@@ -17,13 +17,13 @@ return (
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
           {/* route exacte, bouton nav enfoncé */}      
-          <NavLink to="/" exact className="nav-link">Accueil</NavLink>
+          <NavLink to="/" exact="true" className="nav-link">Accueil</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/animaux" exact className="nav-link">Les animaux</NavLink>
+          <NavLink to="/animaux" exact="true" className="nav-link">Les animaux</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/contact" exact className="nav-link">Contact</NavLink>
+          <NavLink to="/contact" exact="true" className="nav-link">Contact</NavLink>
         </li>
         
         <li className="nav-item dropdown">
