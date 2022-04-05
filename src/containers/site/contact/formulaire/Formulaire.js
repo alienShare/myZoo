@@ -17,8 +17,10 @@ return (
     name="nom" 
     onChange={props.handleChange}
     value={props.values.nom}
-    
+    onBlur={props.handleBlur} /*Pour n'afficher le message que si saisit --> mAj props.touched*/
     />
+    {props.touched.nom && props.errors.nom && 
+      <span style={{color: 'red'}}>{props.errors.nom}</span>}
 </div>
 
     <label htmlFor="mail">Votre adresse mail</label>
@@ -32,7 +34,9 @@ return (
   name="mail"
   onChange={props.handleChange}
   value={props.values.mail}
+  onBlur={props.handleBlur}/*mAj props.touched*/
   />
+  {props.touched.mail && props.errors.mail && <span style={{color:'red'}}>{props.errors.mail}</span>}
   
 </div>
 
@@ -46,9 +50,11 @@ return (
   name="message"
   onChange={props.handleChange}
   value={props.values.message}
+  onBlur={props.handleBlur}/*mAj props.touched*/
   >
 
   </textarea>
+  {props.touched.message && props.errors.message &&<span style={{color:'red'}}>{props.errors.message}</span>}
 </div>
  
   <button type="submit" 
@@ -71,7 +77,15 @@ mapPropsToValues : ()=>({
 }),
 /* validation schéma de saisie Yup : vérifications que l'on souhaite faire sur les champs*/
 validationSchema: Yup.object().shape({
-
+  nom: Yup.string()
+  .min(5, "Le nom doit avoir plus de 5 caractères")
+  .required("Le nom est obligatoire!"),
+  mail: Yup.string()
+  .email("L'email n'a pas le bon format")
+  .required("L'email est obligatoire!"),
+  message: Yup.string()
+  .max(200, "Le message ne doit pas dépasser 200 caractères")
+  .min(50, "Le message doit faire au moins 50 caractères")
 }),
 /* action testée */
 handleSubmit: (values)=>{

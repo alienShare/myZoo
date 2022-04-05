@@ -13,8 +13,7 @@ export default class Site extends Component {
         <>
         <div className='site'>
             <NavBar/>
-            <Routes>
-              
+            <Routes>              
               <Route path="/" element={<Accueil/>}/>
               <Route path="/animaux" element={<Application/>}/>
               <Route path="/contact" element={<Contact/>}/>
