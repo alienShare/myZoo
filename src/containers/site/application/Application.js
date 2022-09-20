@@ -40,9 +40,17 @@ export default class Application extends Component {
        
         const filtreFamille = this.state.filtreFamille ? this.state.filtreFamille : "-1";
         const filtreContinent = this.state.filtreContinent ? this.state.filtreContinent : "-1";
-        const animauxAddress = `http://localhost/SERVEURANIMAUX/front/animaux/${filtreFamille}/${filtreContinent}`;
+        /* const animauxAddress = `http://localhost/SERVEURANIMAUX/front/animaux/${filtreFamille}/${filtreContinent}`;
         const listeFamillesAddress = `http://localhost/SERVEURANIMAUX/front/familles`;
-        const listeContinentsAddress = `http://localhost/SERVEURANIMAUX/front/continents`;
+        const listeContinentsAddress = `http://localhost/SERVEURANIMAUX/front/continents`; */
+        //https://api.alienshareonline.fr/front/animaux
+        const serverLocation = window.location.protocol + '//' + 'api.' + window.location.hostname + '/front';
+        const localLocation = 'http://localhost/SERVEURANIMAUX/front';
+        const location = window.location.hostname.search('localhost') === -1 ? serverLocation : localLocation;
+        const animauxAddress = `${location}/animaux/${filtreFamille}/${filtreContinent}`;
+        console.log("adresse serveur animaux : " + animauxAddress);
+        const listeFamillesAddress = `${location}/familles`;
+        const listeContinentsAddress = `${location}/continents`;
         // object.values --> tab d'objets        
          axios.get(animauxAddress)
 
@@ -127,7 +135,7 @@ export default class Application extends Component {
         <div className='container-fluid'>
             <span>Filtres</span>
             {/* familles */}
-            <select onChange={(event)=>{this.handleSelectionFamille(event.target.value)}}>
+            <select className="form-select" onChange={(event)=>{this.handleSelectionFamille(event.target.value)}}>
                 <option 
                     selected={this.state.filtreFamille === null && "selected"} 
                     value="-1">
@@ -137,7 +145,7 @@ export default class Application extends Component {
                 this.state.listeFamilles && this.state.listeFamilles.map(aFamille=>{
                     return <option 
                     value={aFamille.famille_id}
-                    selected={this.state.filtreFamille === aFamille.famille_id && "selected"}                    
+                    selected={this.state.filtreFamille === aFamille.famille_id && "selected"}               
                     >
                         {aFamille.famille_libelle}
                     </option>
@@ -146,7 +154,7 @@ export default class Application extends Component {
                 
             </select>
              {/* continents */}
-             <select onChange={(event)=>{this.handleSelectionContinent(event.target.value)}}>
+             <select className="form-select"  onChange={(event)=>{this.handleSelectionContinent(event.target.value)}}>
                 <option 
                     selected={this.state.filtreContinent === null && "selected"} 
                     value="-1">
@@ -156,7 +164,7 @@ export default class Application extends Component {
                 this.state.listeContinents && this.state.listeContinents.map(aContinent=>{
                     return <option 
                     value={aContinent.continent_id}
-                    selected={this.state.filtreContinent === aContinent.continent_id && "selected"}                    
+                    selected={this.state.filtreContinent === aContinent.continent_id && "selected"}          
                     >
                         {aContinent.continent_libelle}
                     </option>
